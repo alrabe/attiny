@@ -1,0 +1,8 @@
+PROCEDURE
+First of all make the circuit either on breadboard or on PCB/veroboard. Now, connect your Arduino to PC and open ArduinoIDE. Select correct COM port. Write or copy-paste the given sketch to IDE and upload it to Arduino. Once uploaded successfully, go to serial monitor and set Baud rate to 19200 and No line ending.
+
+Now, connect pins of the circuit you made to respective pins of Arduino. If you have made a PCB with L shape male headers, simply plug it in to Arduino’s D8-D13 (and GND) pins.If serial monitor is opened already, close it. Reset Arduino by pressing reset button. Now re-open serial monitor. As soon as it’s opened, you’ll see the following message:
+
+Well, now you need to type a single character like a, b, x etc. and hit Enter↵ to initiate the process. The Arduino code is smart enough to detect your ATtiny model automatically and write correct fuses according to it. You don’t need to specify model or fuse settings. It’ll do all for you. The code can detect 7 different ATtinys. So, after you’ve entered a character you can see the current fuse settings (which bricked the IC) of your ATtiny, and then it will be over-written with correct one, now once again the current fuse setting (which is correct now) is shown. Done.
+
+If you look at the image carefully, you can see the initial fuses were LFUSE: 6A  HFUSE: FE. That indicate’s, reset was disabled in the ATtiny (as I’ve used it as normal I/O pin because I needed six I/O pins), hence it stopped responding to ISP programmers. The HVP set it to default  LFUSE: 6A  HFUSE: FF. Now it’s ready to talk to ISP programmer, 🙂Next, turn off 12V power supply, detach arduino from PC, remove IC from socket and program it using your ISP programmer as you normally do.
